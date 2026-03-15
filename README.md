@@ -103,6 +103,20 @@ The script currently prefers Steam installed at:
 ~/.local/share/Steam
 ```
 
+These paths are examples, not hardcoded usernames or absolute requirements. On Linux the helper derives them from the current account's home directory, so `~` means "the current user's home" and will expand differently on another machine or account.
+
+It also checks several other common Linux package-manager layouts, including:
+
+```text
+~/.steam/steam
+~/.steam/root
+~/.steam/debian-installation
+~/.var/app/com.valvesoftware.Steam/.local/share/Steam
+~/.var/app/com.valvesoftware.Steam/.steam/steam
+~/snap/steam/common/.local/share/Steam
+~/snap/steam/common/.steam/steam
+```
+
 It also assumes StarCraft II is inside a Steam Proton prefix and tries this app id first:
 
 ```text
@@ -114,6 +128,8 @@ On the machine where this was tested, SC2 was found at:
 ```text
 ~/.local/share/Steam/steamapps/compatdata/2924749016/pfx/drive_c/Program Files (x86)/StarCraft II
 ```
+
+On another system that may instead be under a snap Steam path such as `~/snap/steam/common/.local/share/Steam/...`, or another Steam library discovered from the active user's home directory.
 
 ## Things you may need to tailor
 
@@ -165,11 +181,13 @@ The script currently assumes:
 ~/.local/share/Steam
 ```
 
-If Steam lives somewhere else, the script itself will need to be edited. The relevant constant is near the top of `run_sc2campaignlauncher.py`:
+If Steam lives somewhere else, you may need to set `STEAM_DIR` or extend the detection logic. The legacy default in `run_sc2campaignlauncher.py` is:
 
 ```python
 STEAM_DIR = Path.home() / ".local" / "share" / "Steam"
 ```
+
+`Path.home()` is dynamic, so this is still user-agnostic. It resolves to the home directory of whoever is running the launcher.
 
 ### 5. Different Python environment path
 

@@ -1,0 +1,16 @@
+# Virtual environment
+venv/
+
+# PyInstaller build outputs
+build/
+dist/
+
+# Local runtime/app data
+.launcher_appdata/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+
+# Tooling noise
+.DS_Store

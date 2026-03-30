@@ -4,8 +4,10 @@ This folder packages the changes needed to run the Warcraft III: Azeroth Reborn 
 
 ## Quick start
 
-1. Be sure python version 3.12 or newer is installed.
-2. Run the all-in-one setup script:
+1. Be sure python version 3.12 is installed.
+    - 3.12 is required because the original launcher was built with Python 3.12.
+2. Be sure that StarCraft II is installed and working. The installation should be Steam -> Battle.net (non-steam app) -> StarCraft II, and it should be launched at least once to populate the Proton prefix.
+3. Run the all-in-one setup script:
 
 ```bash
 ./setup.sh
@@ -15,11 +17,17 @@ That script will create `./venv`, install `requirements.txt`, run `discover_sc2_
 
 or
 
+0. 1 and 2 from above.
 1. Create a Python 3.12 virtualenv.
 2. Install `requirements.txt`.
 3. Make sure SC2 already works in Proton.
 4. Set `SC2_ROOT`, `SC2_STEAM_APPID`, or `SC2_PROTON` only if auto-detection fails.
 5. Run `./run_sc2campaignlauncher.sh`.
+
+## If you would like to decompile the SC2CampaignLauncher.exe payload yourself 
+
+See the HOW_TO_RECOVER_LAUNCHER_FROM_EXE.md file.
+But the recovered payload is included if you want to use the provided .pyc file directly. I just wanted to document the decompliation process, as the .pyc file is not transparent and some users may want to decompile it themselves.
 
 ## What this bundle contains
 
@@ -102,8 +110,6 @@ The script currently prefers Steam installed at:
 ```text
 ~/.local/share/Steam
 ```
-
-These paths are examples, not hardcoded usernames or absolute requirements. On Linux the helper derives them from the current account's home directory, so `~` means "the current user's home" and will expand differently on another machine or account.
 
 It also checks several other common Linux package-manager layouts, including:
 

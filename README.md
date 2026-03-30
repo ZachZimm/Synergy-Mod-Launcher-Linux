@@ -7,6 +7,7 @@ This folder packages the changes needed to run the Warcraft III: Azeroth Reborn 
 1. Be sure python version 3.12 is installed.
     - 3.12 is required because the original launcher was built with Python 3.12.
 2. Be sure that StarCraft II is installed and working. The installation should be Steam -> Battle.net (non-steam app) -> StarCraft II, and it should be launched at least once to populate the Proton prefix.
+    - The script tries to auto-detect the SC2 install and Proton prefix, so it's important to have SC2 installed under Steam. The code may be expanded to support non-steam installations in the future.
 3. Run the all-in-one setup script:
 
 ```bash
